@@ -1,0 +1,46 @@
+{
+  "$schema": "https://www.schemastore.org/webextension.json",
+  "manifest_version": 2,
+  "name": "Biking Distance",
+  "description": "Calculate and show the biking distance in online rentals in the netherlands",
+  "version": "0.0.1",
+  "icons": {
+    "64": "icons/icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.pararius.com/*"
+      ],
+      "js": [
+        "content_script.js"
+      ]
+    }
+  ],
+  "browser_action": {
+    "default_icon": {
+      "64": "icons/icon.png"
+    },
+    "default_popup": "browserAction/index.html",
+    "default_title": "Biking Distance"
+  },
+  "options_ui": {
+    "page": "options/index.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      },
+      "id": "@biking-distance"
+    }
+  },
+  "web_accessible_resources": [
+    "isochrones/ors-route-jaarbeursplein.json",
+    "isochrones/ors-route-knoop.json",
+    "isochrones/ors-route-sijpesteijn.json",
+    "isochrones/ors-route-stationsplein.json"
+  ]
+}
